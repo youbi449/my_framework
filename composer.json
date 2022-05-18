@@ -1,0 +1,16 @@
+{
+  "name": "ayoub/my-framework",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/app",
+      "Controller\\": "src/Controller"
+    }
+  },
+  "authors": [
+    {
+      "name": "ayoub",
+      "email": "ayoub.belkacemi44@gmail.com"
+    }
+  ],
+  "require": {}
+}

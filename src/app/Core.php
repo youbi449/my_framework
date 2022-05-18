@@ -28,6 +28,8 @@ class Core
 
     public function callRoute()
     {
+
+        //TODO add controller handling
         return array_key_exists($this->path, $this->routes[$this->method])
             ? $this->routes[$this->method][$this->path]()
             : $this->page404();

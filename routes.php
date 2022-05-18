@@ -1,11 +1,12 @@
 <?php
 
 use App\Router;
-
+use App\Response;
 
 Router::get('/testing', function () {
-    echo "test";
+    $response = new Response();
+    return $response->setHeaders(['jwt' => 123])->body(['error' => "Wrong password"])->JSON();
 });
-Router::get('/tested', function () {
-    echo "tested";
+Router::post('/sheesh', function () {
+    echo "sheesh";
 });
