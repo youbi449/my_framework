@@ -2,18 +2,13 @@
 
 namespace Controller;
 
-use App\Response;
+use App\Controller;
 
-class TestController
+class TestController extends Controller
 {
-    public function __construct()
-    {
-        echo "sheesh";
-    }
 
-    public function randomResponse()
+    public function index()
     {
-        $response = new Response();
-        return $response->setHeaders(['jwt' => 123])->body(['error' => "Wrong password"])->JSON();
+        return $this->view->render('index', ['name' => "ayoub", 'age' => 23]);
     }
 }

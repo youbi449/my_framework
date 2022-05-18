@@ -1,12 +1,11 @@
 <?php
 
 use App\Router;
-use App\Response;
 
-Router::get('/testing', function () {
-    $response = new Response();
-    return $response->setHeaders(['jwt' => 123])->body(['error' => "Wrong password"])->JSON();
-});
+use Controller\TestController;
+
+Router::get('/', [TestController::class, 'index']);
+
 Router::post('/sheesh', function () {
     echo "sheesh";
 });

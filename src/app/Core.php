@@ -4,13 +4,14 @@ namespace App;
 
 use App\Router;
 
-require_once '../routes.php';
+require_once '../routes.php';   
 class Core
 {
 
     private $routes;
     private $path;
     private $method;
+
     public function __construct()
     {
         $this->routes = Router::getRoutes();
@@ -28,11 +29,22 @@ class Core
 
     public function callRoute()
     {
+        if (array_key_exists($this->path, $this->routes[$this->method])) {
+            $callbackArg = $this->routes[$this->method][$this->path];
+            if (is_array($callbackArg)) {
+                // it's controller
+                $controllerAsked = $callbackArg[0];
+                $methodAsked = $callbackArg[1];
 
-        //TODO add controller handling
-        return array_key_exists($this->path, $this->routes[$this->method])
-            ? $this->routes[$this->method][$this->path]()
-            : $this->page404();
+                $controller = new $controllerAsked();
+                return $controller->{$methodAsked}();
+            } else {
+                // simple callback
+                return $this->routes[$this->method][$this->path]();
+            }
+        } else {
+            return $this->page404();
+        }
     }
 
     public function page404()
