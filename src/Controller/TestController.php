@@ -12,3 +12,4 @@ class TestController extends Controller
         return $this->view->render('index', ['name' => "ayoub", 'age' => 23]);
     }
 }
+    

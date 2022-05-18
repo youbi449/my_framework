@@ -26,6 +26,15 @@ class Router
         self::$ROUTES['POST'][$uri] = $callback;
     }
 
+    public static function getParamsFromUri($uri)
+    {
+        //TODO 
+        $routes = explode('/', $uri);
+        if ($routes[0] === "") {
+            array_shift($routes);
+        }
+        return $routes;
+    }
 
     static public function getRoutes()
     {
